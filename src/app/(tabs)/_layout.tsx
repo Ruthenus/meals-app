@@ -48,6 +48,19 @@ export default function TabsLayout() {
           )          
         }}
       />
+      <Tabs.Screen
+        name='news'
+        options={{
+          title: 'Новини',
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons
+              name='newspaper'
+              size={size}
+              color={String(color)}
+            />
+          )          
+        }}
+      />
     </Tabs>
   );
 }
