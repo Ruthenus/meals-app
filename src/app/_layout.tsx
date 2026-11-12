@@ -1,18 +1,34 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { useColorScheme } from 'react-native';
+import { Color, Stack } from "expo-router";
+import {
+  MD3LightTheme, PaperProvider
+} from 'react-native-paper';
 
-import { AnimatedSplashOverlay } from '@/components/animated-icon';
-import AppTabs from '@/components/app-tabs';
+const theme = {
+  ...MD3LightTheme,
+  colors: {
+      ...MD3LightTheme.colors,
+      primary: '#e65100',
+      secondary: '#ff9800'
+  }
+};
 
-SplashScreen.preventAutoHideAsync();
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
+export default function RootLayout() {
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <AnimatedSplashOverlay />
-      <AppTabs />
-    </ThemeProvider>
-  );
+    <PaperProvider theme={theme}>
+      <Stack>
+        <Stack.Screen
+          name='(tabs)'
+          options={{
+            headerShown: false
+          }}
+        />
+        <Stack.Screen
+          name='meal/[id]'
+          options={{
+            title: 'Рецепт'
+          }}
+        />
+      </Stack>
+    </PaperProvider>
+  )
 }
