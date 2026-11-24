@@ -1,9 +1,39 @@
-import { Text, View } from "react-native";
+import { MealPreview } from "@/types/meal";
+import { Button, Card, Text } from "react-native-paper";
 
-export default function MealCard() {
+interface MealCardProps {
+  meal: MealPreview;
+  onPress: () => void;
+}
+
+export default function MealCard(props: MealCardProps) {
+  // 1
+  const { meal, onPress } = props;
+
   return (
-    <View>
-      <Text>MealCard</Text>
-    </View>
+    <Card
+      mode="elevated"
+      style={{
+        marginBottom: 16,
+      }}
+    >
+      <Card.Cover
+        source={{
+          uri: meal.strMealThumb,
+        }}
+      />
+      <Card.Content
+        style={{
+          paddingTop: 12,
+        }}
+      >
+        <Text variant="titleMedium">{meal.strMeal}</Text>
+      </Card.Content>
+      <Card.Actions>
+        <Button icon="book-open-page-variant" onPress={onPress}>
+          Рецепт
+        </Button>
+      </Card.Actions>
+    </Card>
   );
 }
