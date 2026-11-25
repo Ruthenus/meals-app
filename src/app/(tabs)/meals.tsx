@@ -30,6 +30,8 @@ export default function MealsScreen() {
       const data = await getMealsByCategory(category);
       setMeals(data);
       // ->
+    } catch (err: any) {
+      console.error(err);
     } finally {
       setLoading(false);
     }
@@ -52,6 +54,8 @@ export default function MealsScreen() {
       const data = await searchMeals(query);
       setMeals(data);
       // ->
+    } catch (err: any) {
+      console.error(err);
     } finally {
       setLoading(false);
     }

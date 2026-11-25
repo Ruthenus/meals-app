@@ -1,15 +1,13 @@
-import { Color, Stack } from "expo-router";
-import {
-  MD3LightTheme, PaperProvider
-} from 'react-native-paper';
+import { Stack } from "expo-router";
+import { MD3LightTheme, PaperProvider } from "react-native-paper";
 
 const theme = {
   ...MD3LightTheme,
   colors: {
-      ...MD3LightTheme.colors,
-      primary: '#e65100',
-      secondary: '#ff9800'
-  }
+    ...MD3LightTheme.colors,
+    primary: "#e65100",
+    secondary: "#ff9800",
+  },
 };
 
 export default function RootLayout() {
@@ -17,18 +15,18 @@ export default function RootLayout() {
     <PaperProvider theme={theme}>
       <Stack>
         <Stack.Screen
-          name='(tabs)'
+          name="(tabs)"
           options={{
-            headerShown: false
+            headerShown: false,
           }}
         />
         <Stack.Screen
-          name='meal/[id]'
+          name="meal/[id]"
           options={{
-            title: 'Рецепт'
+            title: "Рецепт",
           }}
         />
       </Stack>
     </PaperProvider>
-  )
+  );
 }
